@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<control  xmlns="http://www.askia.com/2.0.0/ADCSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.askia.com/2.0.0/ADCSchema https://raw.githubusercontent.com/AskiaADX/ADXSchema/2.0.0/ADCSchema.xsd"
+          version="2.0.0"
+          askiaCompat="5.3.3">
+  <info>
+    <name>adc2-keyInLoop</name>
+    <guid>db6fc5b1-d11b-4c93-abf8-4fe93d6a5974</guid>
+    <version>1.0.0</version>
+    <date>2017-05-16</date>
+    <description><![CDATA[Key In adc for loop]]></description>
+    <company>Askia</company>
+    <author><![CDATA[Clément Salomon <clement@askia.om>]]></author>
+    <site>http://www.askia.com</site>
+    <helpURL></helpURL>
+    <categories>
+      <category>General</category>
+    </categories>
+    <style width="400" height="300" />
+    <constraints>
+      <constraint on="questions" single="true" multiple="true" numeric="false" date="false" open="false" chapter="false" requireParentLoop="true" />
+      <constraint on="controls" responseblock="true" checkbox="false" label="false" listbox="false" radiobutton="false" textbox="false" />
+      <constraint on="responses" max="*" min="*" />
+    </constraints>
+  </info>
+  <outputs defaultOutput="default">
+    <output id="default">
+      <description><![CDATA[Default output]]></description>
+      <content fileName="default.html" type="html" mode="dynamic" position="placeholder" />
+      <content fileName="default.js" type="javascript" mode="dynamic" position="foot" />
+      <content fileName="materialize.min.js" type="javascript" mode="static" position="head" />
+      <content fileName="materialize.min.css" type="css" mode="static" position="head" />
+      <content fileName="default.css" type="css" mode="dynamic" position="head" />
+    </output>
+  </outputs>
+  <properties>
+    <category id="general" name="General">
+      <property xsi:type="standardProperty" id="autoForward" name="Auto Forward" type="string" mode="static" require="false" visible="true">
+        <description><![CDATA[Whether the question continues to the next automatically if a single choice question]]></description>
+        <value></value>
+        <options>
+          <option value="0" text="False" />
+          <option value="1" text="True" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="autoNext" name="Auto Next" type="string" mode="static" require="false" visible="true">
+        <description><![CDATA[Whether the question continues to the next iteration of the loop if a single choice question.]]></description>
+        <value></value>
+        <options>
+          <option value="0" text="False" />
+          <option value="1" text="True" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="fontColor" name="Font Color" type="color" mode="static" require="true" visible="true" colorFormat="rgb">
+        <description><![CDATA[]]></description>
+        <value><![CDATA[0,0,0]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="bgColor" name="Background Color" type="color" mode="static" require="true" visible="true" colorFormat="rgb">
+        <description><![CDATA[]]></description>
+        <value><![CDATA[255,255,255]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="selectColor" name="Selected Row Color" type="color" mode="static" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[]]></description>
+        <value><![CDATA[0,220,245]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="buttonColor" name="Button Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[]]></description>
+        <value><![CDATA[38,166,154]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="fontSize" name="Font Size" type="string" mode="static" require="false" visible="true">
+        <description><![CDATA[The font size for the control]]></description>
+        <value><![CDATA[14px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="controlWidth" name="Control Width" type="string" mode="static">
+        <description><![CDATA[
+          The width of the control
+        ]]></description>
+        <value><![CDATA[100%]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="clearItem" name="Clear Item" type="string" require="false" visible="true">
+        <description><![CDATA[Sets the button to clear the answer of the current item (Default -)]]></description>
+        <value><![CDATA[-]]></value>
+      </property>
+    </category>
+    <category id="numericQuestion" name="Numeric question">
+      <property xsi:type="standardProperty" id="unitStep" name="Step for numeric" type="number" mode="static">
+        <description><![CDATA[
+          
+          Using HTML 5, in modern browser.
+          Indicates the unit to increment or decrement the number using the stepper.
+        
+        ]]></description>
+        <value><![CDATA[1]]></value>
+      </property>
+    </category>
+    <category id="openQuestion" name="Open-ended question">
+      <property xsi:type="standardProperty" id="multiline" name="Multi-line text" type="boolean" mode="static">
+        <description><![CDATA[
+          
+          Allow multi-line text for open-ended question.
+          Only when sub-type is text.
+        
+        ]]></description>
+        <value><![CDATA[false]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="opensubtype" name="Open-ended sub-type" type="string" mode="static">
+        <description><![CDATA[
+          
+          Using HTML 5, in modern browser.
+          Define a sub-type for open-ended question.
+        
+        ]]></description>
+        <value><![CDATA[text]]></value>
+        <options>
+          <option value="text" text="Text" />
+          <option value="email" text="Email" />
+          <option value="url" text="URL" />
+          <option value="color" text="Color" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="datalist" name="Data list" type="string" mode="dynamic">
+        <description><![CDATA[
+          
+          Using HTML 5, in modern browser.
+          Add an auto-completion with the terms in the specified list.
+          Only available on single line.
+          Use a pipe `|` separators between each terms
+        
+        ]]></description>
+        <value></value>
+      </property>
+    </category>
+  </properties>
+</control>

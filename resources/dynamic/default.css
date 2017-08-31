@@ -1,0 +1,38 @@
+.bg-custom-color{%= CurrentADC.InstanceId %} {
+    background-color: rgb({%= CurrentADC.PropValue("bgColor")%}) !important;;
+}
+
+.bg-custom-color.select {
+    background-color: rgb({%= CurrentADC.PropValue("selectColor")%}) !important;
+}
+
+
+.select{%= CurrentADC.InstanceId %} {
+    background-color: rgb({%= CurrentADC.PropValue("selectColor")%}) !important;
+}
+
+.custom-color{%= CurrentADC.InstanceId %} {
+    color: rgb({%= CurrentADC.PropValue("fontColor")%}) !important;
+}
+
+#adc_{%= CurrentADC.InstanceId %} {
+    font-size: {%= CurrentADC.PropValue("fontSize")%} !important;
+    width: {%= CurrentADC.PropValue("controlWidth")%} !important
+}
+
+#adc_{%= CurrentADC.InstanceId %} [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after{
+    background-color:  rgb({%= CurrentADC.PropValue("buttonColor") %}) !important;
+}
+
+#adc_{%= CurrentADC.InstanceId %} [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid rgb({%= CurrentADC.PropValue("buttonColor") %}) !important;
+}
+
+#adc_{%= CurrentADC.InstanceId %} [type="checkbox"]:checked+label:before {
+    border-right: 2px solid rgb({%= CurrentADC.PropValue("buttonColor") %}) !important;
+    border-bottom: 2px solid rgb({%= CurrentADC.PropValue("buttonColor") %}) !important;
+}
+
+td, th {
+    border-radius: 0px !important;
+}

@@ -1,0 +1,34 @@
+{%
+Dim i
+Dim j
+%}
+
+<div id="adc_{%= CurrentADC.InstanceId %}" class="adc-keyin">
+	    <table width="20%" class="bordered bg-custom-color{%= CurrentADC.InstanceId %}">
+        <thead>
+          <tr>
+              <th></th>
+              {% For i = 1 To CurrentQuestion.AvailableResponses.Count %}
+              <th class="custom-color{%= CurrentADC.InstanceId %}"> {%= CurrentQuestion.AvailableResponses[i].Caption %}</th>
+              {% Next %}
+          </tr>
+        </thead>
+
+        <tbody>
+            {% For i = 1 To CurrentQuestion.ParentLoop.AvailableResponses.Count%}
+            <tr class="keyInRow{%= i %}">
+                <td class="custom-color{%= CurrentADC.InstanceId %}">{%= CurrentQuestion.ParentLoop.AvailableResponses[i].Caption%}</td>
+                {% 	IF CurrentQuestion.Type = "single" Then 
+						For j = 1 To CurrentQuestion.AvailableResponses.Count %}
+                			<td><input id="check{%= i %}{%= j %}_{%= CurrentADC.InstanceId %}" style="" type="radio"  name="{%= CurrentQuestion.Iteration(i).InputName() %}" value="{%= CurrentQuestion.Iteration(i).AvailableResponses[j].InputValue() %}" /> <label for="check{%= i %}{%= j %}_{%= CurrentADC.InstanceId %}"></label></td>
+              			{% Next 
+					ElseIf CurrentQuestion.Type = "multiple" Then 
+                		For j = 1 To CurrentQuestion.AvailableResponses.Count %}
+                			<td><input id="check{%= i %}{%= j %}_{%= CurrentADC.InstanceId %}" style="" type="checkbox" name="{%= CurrentQuestion.Iteration(i).InputName() %} {%= CurrentQuestion.Iteration(i).AvailableResponses[j].InputValue() %}" /><label for="check{%= i %}{%= j %}_{%= CurrentADC.InstanceId %}"></label></td>
+              			{% Next
+					EndIf %}
+            </tr>
+            {%Next%}
+        </tbody>
+      </table>
+</div>
